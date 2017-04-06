@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 
+import java.security.PublicKey;
+
 /**
  * Created by xiaotinghong on 2017-04-06.
  */
@@ -140,6 +142,10 @@ public class MoveGestureDetector {
     public boolean isInProgress() {
         return mInProgress;
     }
+
+    public float getCurrX() { return mCurrTouchX; }
+
+    public float getCurrY() { return  mCurrTouchY; }
 
     public float getFocusX() {
         return mCurrTouchX;
