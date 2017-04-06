@@ -26,9 +26,11 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Add all the image view to the candidate list
         allImageViews = new LinkedList<>();
         allImageViews.add( (ImageView) findViewById(R.id.image_view_1) );
         allImageViews.add( (ImageView) findViewById(R.id.image_view_2) );
+        allImageViews.add( (ImageView) findViewById(R.id.image_view_3) );
 
         selectedImageView = null;
 
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity{
     private class MoveListener extends MoveGestureDetector.SimpleOnMoveGestureListener {
         @Override
         public boolean onMove(MoveGestureDetector detector) {
+            // The operations based on move touch event go here
+
             if(selectedImageView == null) {
                 return false;
             }
