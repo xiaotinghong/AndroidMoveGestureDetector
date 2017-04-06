@@ -5,10 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 
-import java.security.PublicKey;
 
 /**
  * Created by xiaotinghong on 2017-04-06.
+ * All the rights and credits reserved to Xiaoting Hong
  */
 
 public class MoveGestureDetector {
