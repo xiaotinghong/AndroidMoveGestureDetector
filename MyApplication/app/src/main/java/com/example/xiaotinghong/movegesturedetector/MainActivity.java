@@ -1,6 +1,7 @@
 package com.example.xiaotinghong.movegesturedetector;
 
 import android.graphics.PointF;
+import android.graphics.Rect;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,13 +53,34 @@ public class MainActivity extends AppCompatActivity{
 
         switch (action) {
             case MotionEvent.ACTION_DOWN: {
-
+                selectedImageView = selectImageViewOnEvent(event);
                 break;
-            } case MotionEvent.ACTION_UP: {
-
+            }
+            case MotionEvent.ACTION_UP: {
+                selectedImageView = null;
                 break;
             }
         }
+    }
+
+    private ImageView selectImageViewOnEvent (MotionEvent event) {
+        float touchX = event.getX();
+        float touchY = event.getY();
+
+        for(ImageView imageView: allImageViews) {
+            // Calculate the hit rect of the current image view
+            int[] screenLocation = new int[2];
+            imageView.getLocationOnScreen(screenLocation);
+            Rect hitRect = new Rect(screenLocation[0], screenLocation[1],
+                    screenLocation[0] + imageView.getWidth(), screenLocation[1] + imageView.getHeight());
+
+            // check if the touch point land within the hit rect
+            if( hitRect.contains((int) touchX, (int) touchY) ) {
+                return imageView;
+            }
+        }
+
+        return null;
     }
 
     private class MoveListener extends MoveGestureDetector.SimpleOnMoveGestureListener {
