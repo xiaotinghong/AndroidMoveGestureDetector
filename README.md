@@ -6,6 +6,24 @@ This MoveGestureDetector is created based on the official ScaleGestureDetector h
 
 This project is a sample to use the MoveGestureDetector to pan multiple imageviews separately.
 
+I also created a RotateGestureDetector here:https://github.com/xiaotinghong/AndroidRotateGestureDetector
+# Methouds
+```
+public boolean isInProgress()
+
+public float getCurrX()
+
+public float getCurrY() 
+
+public float getFocusX() 
+
+public float getFocusY() 
+
+public float getDeltaX() 
+
+public  float getDeltaY() 
+```
+# How to use it
 To use the MoveGestureDetector, simply add the file "MoveGestureDetector.java" into your own project.
 
 After that, it's the coding time :)
@@ -33,29 +51,29 @@ private class MoveListener extends MoveGestureDetector.SimpleOnMoveGestureListen
 
           return true;
       }
-  }
+}
 ```
 Assign this MoveListener to your MoveGestureDetector object.
 ```
 @Override
-  protected void onCreate(Bundle savedInstanceState) {
+protected void onCreate(Bundle savedInstanceState) {
       ...
 
       moveGestureDetector = new MoveGestureDetector(this, new MoveListener());
-  }
+}
 ```
 Don't forget the last step, let the MoveGestureDetector object detect the touch event! There will be nothing happen on the move gesture if you miss this step.
 ```
  @Override
-  public boolean onTouchEvent(MotionEvent event) {
+public boolean onTouchEvent(MotionEvent event) {
       // Let moveGestureDetector detects all events
       if (moveGestureDetector != null) {
           moveGestureDetector.onTouchEvent(event);
       }
-      
+
       ...
-      
+
       return true;
-  }
+}
 ```
 That's all. Enjoy!
